@@ -45,44 +45,44 @@ To resolve this issue, we will need to enable ICMPv4 on the DC-1 firewall.
 </p>
 <p>
 After enabling ICMPv4, we can successfully ping DC-1 from Client-1.
-<p>
-</p>
-<br />
+
+
+<h3>Installing Active Directory </h3>
 
 <p>
-<img src="https://i.imgur.com/HvZBWzc.png" height="60%" width="60%" alt="Disk Sanitization Steps"/>
-</p>
-<img src="https://i.imgur.com/1lrrGPw.png" height="60%" width="60%" alt="Disk Sanitization Steps"/>
+Our next step will be to log back into DC-1 and install AD Users & Computers. Once this is done, we will promote the VM to a DC and set up a new forest named "mydomain.com". After completing these steps, we will restart the system and log back in as user "mydomain.com\labuser".
 <p>
-Now we will log back into DC-1 to install AD Users & Computers. Promote the VM to DC, setup a new forest as "mydomain.com" afterwards restart then log back into DC-1 as user: "mydomain.com\labuser". If you performed the steps properly you should be able to run AD Users & Computers as shown below.
+Once that is finalized we need to proceed with creating Organizational Units (OU) for our domain. To start, we will create an OU named "_EMPLOYEES1" and another OU named "_ADMINS". We can do this by right-clicking on the domain area, selecting "New" > "Organizational Unit", and filling out the necessary fields.
 </p>
-<img src="https://i.imgur.com/cGjvRke.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/7O3Nn84.png" height="60%" width="70%" alt="Disk Sanitization Steps"/>
 <br />
 </p>
-Excellent! We can start creating Organizational Units (OU). Let's first create an OU named _EMPLOYEES. Create another OU named _ADMINS. In order to do that right click on the domain area. Select new->Organizational Unit and fill out the field. Then click inside of your OU and right click, select new and select user and fill out the information for your new user. The user should be named Jane Doe, she is going to be an Admin so her username will be Jane_admin. Lastly add Jane to the domain admins security group. 
+After creating the OUs, we can then create a new user account named "Jane Doe". Since Jane will be an Admin, we will name her account "Jane_admin". Finally, we will add Jane to the "Domain Admins" security group by selecting the group and adding Jane as a member.
+
+
+<h3>Join Client-1 to your domain (mydomain.com)</h3>
+
+Going forward, we will be using the Jane_admin account as our administrator account.
 </p>
-<img src="https://i.imgur.com/hL7g5Y5.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/yelzvNL.png" height="50%" width="50%" alt="Disk Sanitization Steps"/>
 <br />
 </p>
-<img src="https://i.imgur.com/kcgvzdE.png" height="50%" width="50%" alt="Disk Sanitization Steps"/>
-From now on you can use Jane_admin as the administrator account. Now we will join Client-1 to the domain (mydomain.com) from the azure portal we will change client-1's DNS settings to the DC's Private IP address. After you do that restart Client-1 from within the Azure portal. Our picture below shows verification that client-1 is on the DC-1 DNS. 
+Our next step is to join Client-1 to the domain "mydomain.com". To accomplish this, we will change Client-1's DNS settings in the Azure portal to the DC's Private IP address. 
 </p>
-<img src="https://i.imgur.com/jbrGTXW.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<br />
-</p>
-<img src="https://i.imgur.com/kvcm2cY.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/XYgpi0I.png" height="60%" width="70%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
+After this is done, we will restart Client-1 from within the Azure portal. We can then verify that Client-1 is properly connected to DC-1's DNS as shown in the picture above.
+<p>
+<img src="https://i.imgur.com/lqLDj5F.png" height="70%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-We have to join Client-1 to the domain in order to do so navigate to your system settings and go to about. Off to the right select rename this pc (advanced). From there select to change the domain. Enter "mydomain.com" after that enter your credentials from mydomain.com\labuser. Your computer will restart and then client-1 will be a part of mydomain.com
-</p>
-<br />
-<p>
-  <p>
-<img src="https://i.imgur.com/Ze0Em5e.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-</p>
-<p>
+Next, to join Client-1 to the domain, we need to navigate to the system settings and select "About". On the right-hand side, select "Rename this PC (Advanced)" and choose to change the domain. Next, we will enter "mydomain.com" and provide the credentials from "mydomain.com\labuser". After the computer restarts, Client-1 will successfully be a part of "mydomain.com".
+
+  
+<h3>Setup Remote Desktop for non-administrative users on Client-1</h3> 
+
+
 Wonderufl Client-1 is now a part of the domain. Now we will set up remote desktop for non-administrative users on Client-1. We have to log into Client-1 as an admin and open system properties. Click on "Remote Desktop", allow "domain users" access to remote desktop. After completing those steps you should be able to log into Client-1 as a normal user.
 </p>
 <br />
