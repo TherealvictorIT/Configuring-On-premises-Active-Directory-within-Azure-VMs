@@ -21,17 +21,31 @@ This tutorial outlines the implementation of on-premises Active Directory within
 <h2>Deployment and Configuration Steps</h2>
 
 <p>
+<img src="https://i.imgur.com/d22FHIm.png" height="60%" width="60%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-In this lab we will create two VMs in the same VNET. One will be a Domain Controller, the other will be a Client machine. We will change the DC to a static IP because its offering Active Directory services to the client machine. Client machine will be joined to the domain. We will control the DNS settings on the client machine, the client machine will use the DC as its DNS server. 
-</p>
-<br />
+During this lab, we will set up two virtual machines (VMs) within the same virtual network (VNET). One VM will function as a Domain Controller (DC), while the other will serve as a client machine. To ensure seamless communication between the two, we will configure the DC with a static IP address, as it will be responsible for offering Active Directory services to the client machine. Additionally, we will join the client machine to the domain and configure its DNS settings to use the DC as its primary DNS server.
 
+
+<h3>Ensure Connectivity between Client and Domain Controller</h3>
 <p>
-<img src="https://i.imgur.com/d22FHIm.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+
+<img src="https://i.imgur.com/3KuMYbX.png" height="50%" width="60%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-DC-1 has to have a static Private IP Address. Client one will connect to DC-1 to ensure connectivity we will try to ping DC-1 from Client-1. At first the ping will not work correctly. We have to enable ICMPv4 on the firewall on DC-1. Now we can ping DC-1 successfully from Client-1
+To verify connectivity, Client One will be connecting to DC-1 by attempting to ping it. Initially, the ping may fail due to the firewall on DC-1 blocking ICMPv4. 
+</p>
+<p>
+<img src="https://i.imgur.com/248l5zB.png" height="70%" width="80%" alt="Disk Sanitization Steps"/>
+</p>
+<p>
+To resolve this issue, we will need to enable ICMPv4 on the DC-1 firewall. 
+<p>
+<img src="https://i.imgur.com/ofifnq1.png" height="50%" width="60%" alt="Disk Sanitization Steps"/>
+</p>
+<p>
+After enabling ICMPv4, we can successfully ping DC-1 from Client-1.
+<p>
 </p>
 <br />
 
