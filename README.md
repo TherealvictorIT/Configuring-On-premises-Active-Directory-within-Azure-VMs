@@ -83,25 +83,21 @@ Next, to join Client-1 to the domain, we need to navigate to the system settings
 <h3>Setup Remote Desktop for non-administrative users on Client-1</h3> 
 
 
-Wonderufl Client-1 is now a part of the domain. Now we will set up remote desktop for non-administrative users on Client-1. We have to log into Client-1 as an admin and open system properties. Click on "Remote Desktop", allow "domain users" access to remote desktop. After completing those steps you should be able to log into Client-1 as a normal user.
+Now that Client-1 is now successfully a part of mydomain.com our next step is to set up remote desktop access for non-administrative users on Client-1
+<p>
+<img src="https://i.imgur.com/eSoXmMv.png" height="70%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
-<br />
+To do this, we will log in to Client-1 as an administrator and open system properties. From there, we will click on "Remote Desktop" and allow "domain users" access to remote desktop. After completing these steps, normal users should be able to log into Client-1 using remote desktop.
 
+
+<h3>Create additional users and attempt to log into client-1 with one of the users</h3> 
+
+Finally, to verify that normal users can RDP into Client-1, we will use a PowerShell script to generate thousands of users in the domain (DC-1). Once the users are created, we will select one and RDP into Client-1 to ensure that everything is working properly.
 <p>
-  <p>
-<img src="https://i.imgur.com/SApOKiE.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/UFjW5IR.png" height="70%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-Lastly to verify that noraml users can RDP into Client-1 we will use a script to generate thousands of users into the domain. We will input the script in powershell, after the users are created we will select one and RDP into Client-1.
-</p>
-<br />
-<img src="https://i.imgur.com/EzWG8ug.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+The Powershell script successfully created a new user with the username "hero.nicap". We tested the new user's credentials by logging into Client-1, and were able to access it as a normal user.
 <p>
+<img src="https://i.imgur.com/gNnbl5x.png" height="60%" width="60%" alt="Disk Sanitization Steps"/>
 <p>
-  <p>
-<img src="https://i.imgur.com/Gkpe68K.png" height="60%" width="60%" alt="Disk Sanitization Steps"/>
-</p>
-<img src="https://i.imgur.com/n3gMwQV.png" height="60%" width="60%" alt="Disk Sanitization Steps"/>
-<p>
-As you can see the Powershell script created a user with the username "bab.hubo" We were able to login to Client-1 with his credentials as a normal user. 
-</p>
